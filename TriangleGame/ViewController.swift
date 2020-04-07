@@ -15,11 +15,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var gameFieldView: UIView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var gameObject: UIImageView!
+    
+    @IBOutlet weak var shapeX: NSLayoutConstraint!
+    @IBOutlet weak var shapeY: NSLayoutConstraint!
     
     //MARK: - Properties
     private var isGameActive = false
     private var gameTimeLeft: TimeInterval = 0
     private var gameTimer: Timer?
+    private var timer: Timer?
+    private var displayDuration: TimeInterval = 2
     
     //MARK: - IBAction
     @IBAction func stepperChanged(_ sender: UIStepper) {
@@ -36,6 +42,14 @@ class ViewController: UIViewController {
     
     //MARK: - Metods
     private func startGame() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(
+            timeInterval: displayDuration,
+            target: self,
+            selector: #selector(moveImage),
+            userInfo: nil,
+            repeats: true)
+        timer?.fire()
         gameTimer?.invalidate()
         gameTimer = Timer.scheduledTimer(
             timeInterval: 1,
@@ -43,6 +57,7 @@ class ViewController: UIViewController {
             selector: #selector(gameTimerTick),
             userInfo: nil,
             repeats: true)
+        
         gameTimeLeft = stepper.value
         isGameActive = true
         updateUI()
@@ -51,6 +66,7 @@ class ViewController: UIViewController {
     private func stopGame() {
         isGameActive = false
         updateUI()
+        timer?.invalidate()
         gameTimer?.invalidate()
     }
     
@@ -72,7 +88,13 @@ class ViewController: UIViewController {
         } else {
             updateUI()
         }
-        
+    }
+    
+     @objc private func moveImage() {
+        let maxX = gameFieldView.bounds.maxX - gameObject.frame.width
+        let maxY = gameFieldView.bounds.maxY - gameObject.frame.height
+        shapeX.constant = CGFloat(arc4random_uniform(UInt32(maxX)))
+        shapeY.constant = CGFloat(arc4random_uniform(UInt32(maxY)))
     }
     
         //MARK: - LifeCycle
