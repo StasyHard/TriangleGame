@@ -46,6 +46,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-4n-c1l">
                                 <rect key="frame" x="181.5" y="109" width="51" height="30"/>
                                 <state key="normal" title="Начать"/>
+                                <connections>
+                                    <action selector="actionButtonTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZM5-9y-94W"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -67,7 +70,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="jfA-4n-c1l" id="SDh-ax-N15"/>
                         <outlet property="gameFieldView" destination="k1f-ho-NGm" id="dRH-vj-tMn"/>
+                        <outlet property="stepper" destination="Nwz-Xe-Mfc" id="aeO-0S-czx"/>
                         <outlet property="timeLabel" destination="H97-Lb-VhG" id="Kds-6y-o96"/>
                     </connections>
                 </viewController>
