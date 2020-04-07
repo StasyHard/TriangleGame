@@ -57,6 +57,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="gameFieldView" destination="k1f-ho-NGm" id="dRH-vj-tMn"/>
                         <outlet property="timeLabel" destination="H97-Lb-VhG" id="Kds-6y-o96"/>
                     </connections>
                 </viewController>

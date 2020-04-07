@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var gameFieldView: UIView!
     
     @IBAction func stepperChanged(_ sender: UIStepper) {
         timeLabel.text = "Время: \(sender.value) сек"
@@ -18,7 +19,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        gameFieldView.layer.borderWidth = 1
+        gameFieldView.layer.borderColor = UIColor.gray.cgColor
+        gameFieldView.layer.cornerRadius = 5
     }
 
 
