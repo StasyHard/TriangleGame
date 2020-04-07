@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBAction func stepperChanged(_ sender: UIStepper) {
+        timeLabel.text = "Время: \(sender.value) сек"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
