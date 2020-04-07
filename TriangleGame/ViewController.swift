@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     //MARK: - Properties
     private var isGameActive = false
     private var gameTimeLeft: TimeInterval = 0
+    private var gameTimer: Timer?
     
     //MARK: - IBAction
     @IBAction func stepperChanged(_ sender: UIStepper) {
@@ -35,6 +36,13 @@ class ViewController: UIViewController {
     
     //MARK: - Metods
     private func startGame() {
+        gameTimer?.invalidate()
+        gameTimer = Timer.scheduledTimer(
+            timeInterval: 1,
+            target: self,
+            selector: #selector(gameTimerTick),
+            userInfo: nil,
+            repeats: true)
         gameTimeLeft = stepper.value
         isGameActive = true
         updateUI()
@@ -43,6 +51,7 @@ class ViewController: UIViewController {
     private func stopGame() {
         isGameActive = false
         updateUI()
+        gameTimer?.invalidate()
     }
     
     private func updateUI() {
@@ -52,8 +61,18 @@ class ViewController: UIViewController {
             actionButton.setTitle("Остановить", for: .normal)
         } else {
             timeLabel.text = "Время: \(Int(stepper.value)) сек"
-            actionButton.setTitle("Остановить", for: .normal)
+            actionButton.setTitle("Начать", for: .normal)
         }
+    }
+    
+    @objc private func gameTimerTick() {
+        gameTimeLeft -= 1
+        if gameTimeLeft == 0 {
+            stopGame()
+        } else {
+            updateUI()
+        }
+        
     }
     
         //MARK: - LifeCycle
