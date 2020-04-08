@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время: 30 сек" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H97-Lb-VhG">
-                                <rect key="frame" x="20" y="49.5" width="113.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время: 40 сек" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H97-Lb-VhG">
+                                <rect key="frame" x="20" y="49.5" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,12 +36,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-ho-NGm">
                                 <rect key="frame" x="20" y="147" width="374" height="676"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-97-WZi">
-                                        <rect key="frame" x="23" y="54" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-97-WZi">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="NaI-I2-ipE"/>
+                                            <constraint firstAttribute="height" constant="80" id="btv-9S-9mX"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="SgU-U8-n0j" appends="YES" id="G94-Lz-07K"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="nmf-97-WZi" firstAttribute="leading" secondItem="k1f-ho-NGm" secondAttribute="leading" id="ATS-Xj-bSh"/>
+                                    <constraint firstItem="nmf-97-WZi" firstAttribute="top" secondItem="k1f-ho-NGm" secondAttribute="top" id="Wfb-qb-I9x"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-4n-c1l">
                                 <rect key="frame" x="181.5" y="109" width="51" height="30"/>
@@ -72,11 +83,20 @@
                     <connections>
                         <outlet property="actionButton" destination="jfA-4n-c1l" id="SDh-ax-N15"/>
                         <outlet property="gameFieldView" destination="k1f-ho-NGm" id="dRH-vj-tMn"/>
+                        <outlet property="gameObject" destination="nmf-97-WZi" id="Cm8-wo-Jz9"/>
+                        <outlet property="scoreLabel" destination="6UC-Ye-7fO" id="X2U-3c-tbB"/>
+                        <outlet property="shapeX" destination="ATS-Xj-bSh" id="Igr-A5-bOy"/>
+                        <outlet property="shapeY" destination="Wfb-qb-I9x" id="N33-nE-74b"/>
                         <outlet property="stepper" destination="Nwz-Xe-Mfc" id="aeO-0S-czx"/>
                         <outlet property="timeLabel" destination="H97-Lb-VhG" id="Kds-6y-o96"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SgU-U8-n0j">
+                    <connections>
+                        <action selector="objectTaped:" destination="BYZ-38-t0r" id="BV3-QW-rzw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
         </scene>
