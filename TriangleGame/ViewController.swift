@@ -15,11 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
-    
-    @IBOutlet weak var gameFieldView: UIView!
-    @IBOutlet weak var gameObject: UIImageView!
-    @IBOutlet weak var shapeX: NSLayoutConstraint!
-    @IBOutlet weak var shapeY: NSLayoutConstraint!
+    @IBOutlet weak var gameFieldView: GameFieldView!
     
     //MARK: - Properties
     private var isGameActive = false
@@ -42,7 +38,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func objectTaped(_ sender: UITapGestureRecognizer) {
+    func objectTaped() {
         guard isGameActive else { return }
         repositionImageWithTimer()
         score += 1
@@ -73,7 +69,7 @@ class ViewController: UIViewController {
     }
     
     private func updateUI() {
-        gameObject.isHidden = !isGameActive
+        gameFieldView.isShapeHiden = !isGameActive
         stepper.isEnabled = !isGameActive
         if isGameActive {
             timeLabel.text = "Осталось: \(Int(gameTimeLeft)) сек"
@@ -94,10 +90,7 @@ class ViewController: UIViewController {
     }
     
      @objc private func moveImage() {
-        let maxX = gameFieldView.bounds.maxX - gameObject.frame.width
-        let maxY = gameFieldView.bounds.maxY - gameObject.frame.height
-        shapeX.constant = CGFloat(arc4random_uniform(UInt32(maxX)))
-        shapeY.constant = CGFloat(arc4random_uniform(UInt32(maxY)))
+        gameFieldView.randomizeShapes()
     }
     
     private func repositionImageWithTimer() {
@@ -120,6 +113,10 @@ class ViewController: UIViewController {
         gameFieldView.layer.cornerRadius = 5
         
         updateUI()
+        
+        gameFieldView.shapeHitHadler = { [weak self] in
+            self?.objectTaped()
+        }
     }
 
 
