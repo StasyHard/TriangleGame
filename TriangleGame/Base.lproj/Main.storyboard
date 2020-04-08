@@ -15,25 +15,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время: 40 сек" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H97-Lb-VhG">
-                                <rect key="frame" x="20" y="49.5" width="114" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" maximumValue="100" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Nwz-Xe-Mfc">
-                                <rect key="frame" x="300" y="44" width="94" height="32"/>
-                                <connections>
-                                    <action selector="stepperChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="sih-XB-vdV"/>
-                                </connections>
-                            </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Последний счет: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6UC-Ye-7fO">
                                 <rect key="frame" x="132.5" y="841" width="149" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-ho-NGm" customClass="GameFieldView" customModule="TriangleGame" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-ho-NGm" customClass="GameFieldView" customModule="TriangleGame" customModuleProvider="target">
                                 <rect key="frame" x="20" y="147" width="374" height="676"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -42,46 +30,32 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-4n-c1l">
-                                <rect key="frame" x="181.5" y="109" width="51" height="30"/>
-                                <state key="normal" title="Начать"/>
-                                <connections>
-                                    <action selector="actionButtonTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZM5-9y-94W"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a9M-MR-Kll" customClass="GameControlView" customModule="TriangleGame" customModuleProvider="target">
+                                <rect key="frame" x="20" y="44" width="374" height="95"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="H97-Lb-VhG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0Fv-Zf-NRB"/>
+                            <constraint firstItem="k1f-ho-NGm" firstAttribute="top" secondItem="a9M-MR-Kll" secondAttribute="bottom" constant="8" id="0BQ-TX-gqz"/>
+                            <constraint firstItem="a9M-MR-Kll" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3dy-4P-Az9"/>
                             <constraint firstItem="6UC-Ye-7fO" firstAttribute="top" secondItem="k1f-ho-NGm" secondAttribute="bottom" constant="18" id="JhI-SW-WSF"/>
-                            <constraint firstItem="Nwz-Xe-Mfc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NYP-TC-2ov"/>
-                            <constraint firstItem="k1f-ho-NGm" firstAttribute="top" secondItem="jfA-4n-c1l" secondAttribute="bottom" constant="8" id="T6p-ja-Kz8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a9M-MR-Kll" secondAttribute="trailing" constant="20" id="PlN-BY-Um5"/>
                             <constraint firstItem="k1f-ho-NGm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VRU-Qe-NVE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k1f-ho-NGm" secondAttribute="trailing" constant="20" id="ZRU-sP-hD2"/>
                             <constraint firstItem="6UC-Ye-7fO" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="dG4-I0-sah"/>
-                            <constraint firstItem="jfA-4n-c1l" firstAttribute="top" secondItem="Nwz-Xe-Mfc" secondAttribute="bottom" constant="33" id="hqg-b6-Rzm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nwz-Xe-Mfc" secondAttribute="trailing" constant="20" id="m5k-cD-Ep1"/>
-                            <constraint firstItem="jfA-4n-c1l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mUd-m6-gzY"/>
+                            <constraint firstItem="a9M-MR-Kll" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ia1-IY-rjm"/>
                             <constraint firstItem="6UC-Ye-7fO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o6B-vm-9NH"/>
-                            <constraint firstItem="Nwz-Xe-Mfc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H97-Lb-VhG" secondAttribute="trailing" id="qJo-ZK-3yM"/>
-                            <constraint firstItem="H97-Lb-VhG" firstAttribute="centerY" secondItem="Nwz-Xe-Mfc" secondAttribute="centerY" id="ysU-dG-Gpp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="actionButton" destination="jfA-4n-c1l" id="SDh-ax-N15"/>
+                        <outlet property="gameControl" destination="a9M-MR-Kll" id="NcS-9u-NfW"/>
                         <outlet property="gameFieldView" destination="k1f-ho-NGm" id="dRH-vj-tMn"/>
                         <outlet property="scoreLabel" destination="6UC-Ye-7fO" id="X2U-3c-tbB"/>
-                        <outlet property="stepper" destination="Nwz-Xe-Mfc" id="aeO-0S-czx"/>
-                        <outlet property="timeLabel" destination="H97-Lb-VhG" id="Kds-6y-o96"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="SgU-U8-n0j">
-                    <connections>
-                        <action selector="objectTaped:" destination="BYZ-38-t0r" id="BV3-QW-rzw"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
         </scene>
